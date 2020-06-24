@@ -24,6 +24,7 @@ def update_hook(ctx, **params):
 
 def process(inputs, ctx, **kwargs):
     frame, is_streaming = helpers.load_image(inputs, 'input', rgb=False)
+    LOG.info("frame shape: {}".format(frame.shape))
     bboxes, probabilities = detect_bboxes(ctx.drivers[0], frame, PARAMS.get("detect_threshold", .5))
     for bbox in bboxes.astype(int):
         cv2.rectangle(frame, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (0, 255, 0), 1)
