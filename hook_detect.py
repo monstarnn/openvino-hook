@@ -37,6 +37,6 @@ def process(inputs, ctx, **kwargs):
 
     return {
         'output': output,
-        'bboxes': bboxes,
-        'probabilities': probabilities,
+        'bboxes': bboxes.tolist(),
+        'probabilities': probabilities.tolist(),
     }
